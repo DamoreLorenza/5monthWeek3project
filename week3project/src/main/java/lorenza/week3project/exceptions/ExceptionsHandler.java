@@ -1,5 +1,6 @@
 package lorenza.week3project.exceptions;
 
+import lorenza.week3project.payload.ErrorsDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
