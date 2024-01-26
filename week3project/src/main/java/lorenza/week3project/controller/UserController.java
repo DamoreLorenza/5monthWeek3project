@@ -1,11 +1,16 @@
 package lorenza.week3project.controller;
 
 import lorenza.week3project.entities.User;
+import lorenza.week3project.exceptions.BadRequestException;
+import lorenza.week3project.payload.NewUserDTO;
+import lorenza.week3project.payload.NewUserResponseDTO;
 import lorenza.week3project.services.UserService;
 import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -15,13 +20,6 @@ import java.util.UUID;
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @GetMapping
-    public Page<User> getUsers(@RequestParam(defaultValue = "0") int page,
-                               @RequestParam(defaultValue = "10") int size,
-                               @RequestParam(defaultValue = "id") String orderBy) {
-        return userService.getUserByUsername(page, size, orderBy);
-    }
 
     @GetMapping("/{userUUID}")
     public User getUserByUUID(@PathVariable UUID userUUID) {
@@ -39,5 +37,20 @@ public class UserController {
     public void getUserByUUIDAndDelete(@PathVariable UUID userUUID) {
         userService.findByUUIDAndDelete(userUUID);
     }
+
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public NewUserResponseDTO createUser(@RequestBody @Validated NewUserDTO newUserPayload, BindingResult validation) {
+        System.out.println(validation);
+        if (validation.hasErrors()) {
+            System.out.println(validation.getAllErrors());
+            throw new BadRequestException("Errori nel payload");
+        } else {
+            User newUser = userService.save(newUserPayload);
+        }
+
+    }
+
 
 }

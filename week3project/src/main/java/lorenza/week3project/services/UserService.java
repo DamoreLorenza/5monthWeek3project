@@ -2,6 +2,7 @@ package lorenza.week3project.services;
 
 import lorenza.week3project.entities.User;
 import lorenza.week3project.exceptions.NotFoundException;
+import lorenza.week3project.payload.NewUserDTO;
 import lorenza.week3project.repositories.UserDAO;
 import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,7 @@ public class UserService  {
     public User getUserByUsername(String username) {
         return userDAO.findByUsername(username);
     }
-    public Page<User> getUser(int page, int size, String orderBy) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(orderBy));
-        return userDAO.findAll(pageable);
-    }
-
+    
 
     public User findByUUID(UUID uuid) {
         return userDAO.findById(uuid).orElseThrow(() -> new NotFoundException(uuid));
@@ -40,5 +37,8 @@ public class UserService  {
     public void findByUUIDAndDelete(UUID uuid) {
         User found = this.findByUUID(uuid);
         userDAO.delete(found);
+    }
+
+    public User save(NewUserDTO newUserPayload) {
     }
 }

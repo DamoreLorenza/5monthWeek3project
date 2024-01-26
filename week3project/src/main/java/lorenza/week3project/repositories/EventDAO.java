@@ -10,8 +10,4 @@ import java.util.UUID;
 public interface EventDAO extends JpaRepository<Event, UUID> {
     List<Event> findFreeSeats(int freeSeats);
 
-    static Event findByUUID(UUID uuid) {
-        return null;
-    }
-
 }
