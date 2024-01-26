@@ -25,6 +25,6 @@ public class Event {
     private String description;
     private LocalDateTime date;
     private String location;
-    private int FreeSeats;
+    private int freeSeats;
 
 }
