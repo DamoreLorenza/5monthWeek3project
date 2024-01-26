@@ -2,6 +2,7 @@ package lorenza.week3project.services;
 
 import lorenza.week3project.entities.Event;
 import lorenza.week3project.entities.User;
+import lorenza.week3project.exceptions.NotFoundException;
 import lorenza.week3project.repositories.EventDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
