@@ -20,7 +20,6 @@ public class Event {
     @Id
     @GeneratedValue
     private UUID uuid;
-
     private String title;
     private String description;
     private LocalDateTime date;
