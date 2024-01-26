@@ -15,7 +15,7 @@ import java.awt.print.Pageable;
 import java.util.UUID;
 
 @Service
-public class UserService  {
+public class UserService {
     @Autowired
     private UserDAO userDAO;
 
@@ -42,4 +42,5 @@ public class UserService  {
 
     public User save(NewUserDTO newUserPayload) {
     }
+
 }
