@@ -7,6 +7,7 @@ import lorenza.week3project.exceptions.NotFoundException;
 import lorenza.week3project.payload.NewUserDTO;
 import lorenza.week3project.repositories.EventDAO;
 import lorenza.week3project.repositories.OrganizerDAO;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,5 @@ public class OrganizerService {
         Organizers found = this.findByUUID(uuid);
         organizerDAO.delete(found);
     }
-    
 
     }
