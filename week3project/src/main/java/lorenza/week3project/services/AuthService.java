@@ -1,6 +1,6 @@
 package lorenza.week3project.services;
 
-import lorenza.week3project.entities.Role;
+
 import lorenza.week3project.entities.User;
 import lorenza.week3project.exceptions.BadRequestException;
 import lorenza.week3project.exceptions.UnauthorizedException;
@@ -44,7 +44,6 @@ public class AuthService {
         newUser.setName(body.name());
         newUser.setEmail(body.email());
         newUser.setPassword(bcrypt.encode(body.password()));
-        newUser.setRole(Role.USER);
         return userDAO.save(newUser);
     }
 }

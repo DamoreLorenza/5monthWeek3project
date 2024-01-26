@@ -18,9 +18,9 @@ import java.util.UUID;
 @Setter
 @ToString
 @Entity
-@Table(name = "user")
+@Table(name = "oragnizers")
 @JsonIgnoreProperties({"password", "authorities", "accountNonExpired", "enabled", "accountNonLocked", "credentialsNonExpired", "username"})
-public class User implements UserDetails {
+public class Organizers implements UserDetails {
     @Id
     @GeneratedValue
     private UUID uuid;
@@ -29,8 +29,17 @@ public class User implements UserDetails {
     private String username;
     private String email;
     private String password;
+    private boolean isOrganizer;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne
+    @JoinColumn(name = "event_uuid")
+    private Event event;
+
+    @ManyToOne
+    @JoinColumn(name = "organizer_uuid")
+    private User organizer;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -63,6 +72,5 @@ public class User implements UserDetails {
     }
 
 
+
 }
-
-

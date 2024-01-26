@@ -1,25 +1,18 @@
 package lorenza.week3project.controller;
-
 import lorenza.week3project.entities.User;
-import lorenza.week3project.exceptions.BadRequestException;
-import lorenza.week3project.payload.NewUserDTO;
-import lorenza.week3project.payload.NewUserResponseDTO;
 import lorenza.week3project.services.UserService;
-import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
