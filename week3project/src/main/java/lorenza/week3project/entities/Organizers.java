@@ -39,7 +39,7 @@ public class Organizers implements UserDetails {
 
     @ManyToOne
     @JoinColumn(name = "organizer_uuid")
-    private User organizer;
+    private Organizers organizer;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

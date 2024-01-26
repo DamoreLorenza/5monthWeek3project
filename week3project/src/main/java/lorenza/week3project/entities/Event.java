@@ -1,9 +1,6 @@
 package lorenza.week3project.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -25,5 +22,8 @@ public class Event {
     private LocalDateTime date;
     private String location;
     private int freeSeats;
+
+    @OneToOne(mappedBy = "event")
+    private Organizers organizersr;
 
 }
