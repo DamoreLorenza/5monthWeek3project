@@ -1,6 +1,7 @@
 package lorenza.week3project.services;
 
 import lorenza.week3project.entities.User;
+import lorenza.week3project.exceptions.NotFoundException;
 import lorenza.week3project.repositories.UserDAO;
 import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
